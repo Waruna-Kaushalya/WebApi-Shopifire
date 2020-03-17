@@ -54,6 +54,47 @@ app.get('/api/products', (req, res) => {
 
 });
 
+
+app.post('/api/products', (req, res) => {
+
+  let products = [], id = null;
+  let cart = JSON.parse(req.body.cart);
+  if (!cart) return res.json(products)
+  for (var i = 0; i < arrayB.length; i++) {
+    id = arrayB[i].id.toString();
+    if (cart.hasOwnProperty(id)) {
+
+      arrayB[i].qty = cart[id]
+      products.push(arrayB[i]);
+    }
+  }
+
+  return res.json(products);
+});
+
+
+app.post('/api/storecart', (req, res) => {
+
+  //console.log("cart request7-------------------")
+
+  let cart = req.body.cart;
+  let userId = req.body.id
+  console.log(userId)
+
+  let email1 = "surain@gmail.com"
+
+  var id1 = mongoose.Types.ObjectId(userId);
+
+  var id11 = "ObjectId(5e6e4ad9a119c22d6067f2ba)"
+
+  userModel.findOne({ _id: id1 }, function (err, doc) {
+    doc.name = "cert";
+    doc.cart = cart
+    doc.save();
+  });
+});
+
+
 app.use(morgan('tiny'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
