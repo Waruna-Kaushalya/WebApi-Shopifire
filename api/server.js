@@ -94,6 +94,22 @@ app.post('/api/storecart', (req, res) => {
   });
 });
 
+app.get('/api/customers', (req, res) => {
+  console.log("customers get 1000000000000000000000000")
+
+  userModel.find()
+    .then(users => res.json(users))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+app.delete('/api/customers/:id', (req, res) => {
+  console.log("customers delete 000000000000000000000000")
+
+  userModel.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Item deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 
 app.use(morgan('tiny'))
 app.use(bodyParser.json());
