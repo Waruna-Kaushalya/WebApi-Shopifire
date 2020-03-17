@@ -14,6 +14,46 @@ const adminloginRoute = require('../api/routes/adminLog')
 
 require('dotenv').config();
 
+
+const mongoose = require('./config/keys');
+var Schema = mongoose.Schema;
+
+var fenceNodeConnection = new Schema({
+
+  id: Number,
+  name: String,
+  available_quantity: Number,
+  price: Number,
+  image: String,
+  description: String
+
+}, { collection: 'items', versionKey: false });
+
+var fenceNodeConnection = mongoose.model('fenceNodeConnection', fenceNodeConnection);
+
+var arrayB = [];
+
+app.get('/api/products', (req, res) => {
+
+  var arrayA = [];
+
+  fenceNodeConnection.find()
+    .then(function (doc) {
+      if (doc) {
+        for (var i = 0; i < doc.length; i++) {
+          arrayA.push(doc[i])
+        }
+        arrayB = arrayA
+        return res.json(arrayA);
+      }
+      else {
+        console.log("detabases error");
+      }
+
+    });
+
+});
+
 app.use(morgan('tiny'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
