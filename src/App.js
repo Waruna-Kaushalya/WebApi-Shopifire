@@ -3,7 +3,6 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Products from './components/ProductList';
 import Cart from './components/Cart';
-import Checkout from './components/Checkout';
 import AdminLog from './components/AdminLog'
 import ItemList from "./components/item-list.component";
 import AdminApp from "./components/AdminApp"
@@ -75,7 +74,6 @@ class App extends Component {
             <br />
             <Route exact path="/" component={Products} />
             <Route exact path="/cart" component={Cart} />
-            <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/AdminLog" component={AdminLog} />
             <Route exact path="/AdminItems" component={AdminApp} />
             {(!auth) ? <Route exact path="/login" component={Login} /> : ''}
