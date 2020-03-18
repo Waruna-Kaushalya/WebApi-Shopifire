@@ -66,7 +66,6 @@ class App extends Component {
                   {
                     (this.state.loggedinStatus) ?
                       (<Link className="nav-item nav-link" to="/">User</Link>) : ''
-
                   }
                 </div>
               </div>
