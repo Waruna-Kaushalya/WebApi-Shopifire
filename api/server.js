@@ -100,7 +100,7 @@ app.use('/api/auth/login', loginValidate, loginRoute);
 app.use('/api/auth/register', validate, userRoute);
 app.use('/api/auth/adminLog', loginValidate, adminloginRoute);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT);
 console.log('api runnging on port ' + PORT + ': ');
