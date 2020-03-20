@@ -14,32 +14,16 @@ const adminloginRoute = require('../api/routes/adminLog')
 
 require('dotenv').config();
 
-
-// const mongoose = require('./config/keys');
-
-
-//=============
-
-const db = process.env.MONGODB_URL;
-
-const connectDB = async () => {
-  try {
-    await mongoose.connect(db, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true
-    });
-    console.log("MongoDB is Connected...");
-  } catch (err) {
-    console.error(err.message);
-    process.exit(1);
-  }
-};
-//=============
+app.use(morgan('tiny'))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+const itemsRouter = require('./routes/items');
+app.use('/items', itemsRouter);
 
 
-
-
-var Schema = db.Schema;
+const mongoose = require('./config/keys');
+var Schema = mongoose.Schema;
 
 var fenceNodeConnection = new Schema({
 
@@ -52,7 +36,7 @@ var fenceNodeConnection = new Schema({
 
 }, { collection: 'items', versionKey: false });
 
-var fenceNodeConnection = db.model('fenceNodeConnection', fenceNodeConnection);
+var fenceNodeConnection = mongoose.model('fenceNodeConnection', fenceNodeConnection);
 
 var arrayB = [];
 
@@ -77,7 +61,6 @@ app.get('/api/products', (req, res) => {
 
 });
 
-
 app.post('/api/products', (req, res) => {
 
   let products = [], id = null;
@@ -93,28 +76,6 @@ app.post('/api/products', (req, res) => {
   }
 
   return res.json(products);
-});
-
-
-app.post('/api/storecart', (req, res) => {
-
-  //console.log("cart request7-------------------")
-
-  let cart = req.body.cart;
-  let userId = req.body.id
-  console.log(userId)
-
-  let email1 = "surain@gmail.com"
-
-  var id1 = mongoose.Types.ObjectId(userId);
-
-  var id11 = "ObjectId(5e6e4ad9a119c22d6067f2ba)"
-
-  userModel.findOne({ _id: id1 }, function (err, doc) {
-    doc.name = "cert";
-    doc.cart = cart
-    doc.save();
-  });
 });
 
 app.get('/api/customers', (req, res) => {
@@ -133,13 +94,6 @@ app.delete('/api/customers/:id', (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-
-app.use(morgan('tiny'))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-const itemsRouter = require('./routes/items');
-app.use('/items', itemsRouter);
 
 
 app.use('/api/auth/login', loginValidate, loginRoute);
