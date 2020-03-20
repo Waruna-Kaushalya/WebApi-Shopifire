@@ -15,8 +15,31 @@ const adminloginRoute = require('../api/routes/adminLog')
 require('dotenv').config();
 
 
-const mongoose = require('./config/keys');
-var Schema = mongoose.Schema;
+// const mongoose = require('./config/keys');
+
+
+//=============
+
+const db = process.env.MONGODB_URL;
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(db, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+    console.log("MongoDB is Connected...");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+//=============
+
+
+
+
+var Schema = db.Schema;
 
 var fenceNodeConnection = new Schema({
 
@@ -29,7 +52,7 @@ var fenceNodeConnection = new Schema({
 
 }, { collection: 'items', versionKey: false });
 
-var fenceNodeConnection = mongoose.model('fenceNodeConnection', fenceNodeConnection);
+var fenceNodeConnection = db.model('fenceNodeConnection', fenceNodeConnection);
 
 var arrayB = [];
 
