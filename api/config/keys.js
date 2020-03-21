@@ -2,7 +2,7 @@ var mongooseconn = require('mongoose');
 
 const db = 'mongodb+srv://Waruna:1qaz@shopifirecluster-qkn98.mongodb.net/shopifire?retryWrites=true&w=majority'
 
-mongooseconn.connect(process.env.MONGODB_URL || db, function (error) 
+mongooseconn.connect(db, function (error) 
 
 {
     if (error == null) {
