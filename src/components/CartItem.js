@@ -63,12 +63,11 @@ export default class CartItem extends React.Component {
 								</td>
 									<td style={{ width: "16rem", marginRight: "15px", marginBottom: "15px" }}>
 										<h4 className="card-title">{product.title}</h4>
-										<h5 className="card-text"><small>price: </small>${product.price}</h5>
+										<h5 className="card-text"><small>price: </small>Rs.{product.price}</h5>
 										<label>{this.state.productAmount}</label>
-										<input type="number" value={this.state.quantity} name="quantity" min="1" onChange={this.handleInputChange} style={{ width: "60px", marginRight: "10px", borderRadius: "3px" }} />
-										<label onChange={this.handleInputChange} value={this.state.productId}>{product.id}</label>
+										<input type="number" value={this.state.quantity} name="quantity" onChange={this.handleInputChange} style={{ width: "60px", marginRight: "10px", borderRadius: "3px" }} />
 										<span className="card-text text-success"><small>Quantity: </small>{this.state.quantity}</span>
-										<h5 ><small>price: </small>${product.price * parseInt(this.state.quantity)}</h5>
+										<h5 ><small>price: </small>Rs.{product.price * parseInt(this.state.quantity)}</h5>
 										<button className="btn btn-sm btn-warning " onClick={() => this.props.remove(product)}>Remove from cart</button>
 									</td></tr>
 							</table>
