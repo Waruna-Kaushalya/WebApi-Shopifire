@@ -83,20 +83,19 @@ export default class ProductItem extends React.Component {
 		const { product } = this.props;
 		return (
 			<div className="card" style={{ width: "16rem", marginRight: "15px", marginBottom: "15px" }}>
-			<img class="card-img-top" src={product.img} alt="Card image cap" />
+			<img class="card-img-top" src={product.img} alt="Card image cap" height = "270rem"/>
 			
 		
 			<div className="card-body">
 			  <h4 className="card-title">{product.title}</h4>
 			  <p className="card-text">{product.description}</p>
-			  <h5 className="card-text"><small>price: </small>${product.price}</h5>
+			  <h5 className="card-text"><small>price: </small>Rs. {product.price}</h5>
 			  
 			  
 			
 				  <div>
 					  <button className="btn btn-sm btn-warning float-right" onClick={this.addToCart}>Add to cart</button>
-					  <input type="number" value={this.state.quantity} name="quantity" onChange={this.handleInputChange} className="float-right" style={{ width: "60px", marginRight: "10px", borderRadius: "3px"}}/>
-				  </div> : 
+				  </div> 
 			  
 			   
 
