@@ -1,6 +1,10 @@
 var mongooseconn = require('mongoose');
 
-const db = 'mongodb+srv://Waruna:1qaz@shopifirecluster-qkn98.mongodb.net/shopifire?retryWrites=true&w=majority'
+// newDB
+const db = 'mongodb+srv://Waruna:1qaz@shopifirebackupcluster-nir4u.mongodb.net/shopifire?retryWrites=true&w=majority'
+
+// oldDB
+// const db = 'mongodb+srv://Waruna:1qaz@shopifirecluster-qkn98.mongodb.net/shopifire?retryWrites=true&w=majority'
 
 mongooseconn.connect(process.env.MONGODB_URL || db, function (error) 
 
