@@ -59,7 +59,7 @@ export default class CartItem extends React.Component {
 						<div className="col">
 							<table>
 								<tr><td width="300px">
-									<img className="card-img-top" src={product.image} alt="Card image cap" style={{ width: "16rem", marginRight: "15px", marginBottom: "15px" }} />
+									<img className="card-img-top" src={product.img} alt="Card image cap" style={{ width: "16rem", marginRight: "15px", marginBottom: "15px" }} />
 								</td>
 									<td style={{ width: "16rem", marginRight: "15px", marginBottom: "15px" }}>
 										<h4 className="card-title">{product.title}</h4>
