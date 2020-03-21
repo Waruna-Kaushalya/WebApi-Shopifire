@@ -38,7 +38,7 @@ export default class CartItem extends React.Component {
 		const { product } = this.props;
 		let cart = localStorage.getItem('cart');
 		let cart1 = JSON.parse(cart)
-		this.setState({ productId: product.id, quantity: cart1[product.id] });
+		this.setState({ productId: product._id, quantity: cart1[product._id] });
 
 	};
 

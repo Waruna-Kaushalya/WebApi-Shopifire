@@ -67,7 +67,7 @@ app.post('/api/products', (req, res) => {
   let cart = JSON.parse(req.body.cart);
   if (!cart) return res.json(products)
   for (var i = 0; i < arrayB.length; i++) {
-    id = arrayB[i].id.toString();
+    id = arrayB[i]._id.toString();
     if (cart.hasOwnProperty(id)) {
 
       arrayB[i].qty = cart[id]

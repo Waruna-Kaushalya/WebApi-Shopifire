@@ -26,9 +26,9 @@ export default class Cart extends React.Component {
 				let total = 0;
 
 				products.forEach(element => {
-					console.log(element.id)
+					console.log(element._id)
 
-					total += parseInt(element.price) * cart1[element.id];
+					total += parseInt(element.price) * cart1[element._id];
 				});
 
 				this.setState({ products, total });
