@@ -39,13 +39,14 @@ export default class Cart extends React.Component {
 	}
 
 	removeFromCart = (product) => {
-		let products = this.state.products.filter((item) => item.id !== product.id);
+		let products = this.state.products.filter((item) => item._id !== product._id);
 		let cart = JSON.parse(localStorage.getItem('cart'));
-		delete cart[product.id.toString()];
+		delete cart[product._id.toString()];
 		localStorage.setItem('cart', JSON.stringify(cart));
-		let total = this.state.total - (product.qty * product.price)
-		this.setState({ products, total });
+		let total = this.state.total - (product.qty * product.price) 
+		this.setState({products, total});
 	}
+
 
 	clearCart = () => {
 		localStorage.removeItem('cart');
