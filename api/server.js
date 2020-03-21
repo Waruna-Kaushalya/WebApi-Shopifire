@@ -104,3 +104,9 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT);
 console.log('api runnging on port ' + PORT + ': ');
+
+
+// app.listen(PORT, '0.0.0.0', function(err) {
+//   console.log("===========================")
+//   console.log('api runnging on port ' + PORT + ': ');
+// });
