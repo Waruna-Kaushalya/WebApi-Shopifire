@@ -49,10 +49,10 @@ export default class ItemList extends Component {
   render() {
     return (
       <div>
-        <h3>Logged Exercises</h3>
+        <h3>Customer List</h3>
         <table className="table">
           <thead className="thead-light">
-            <h1>Users</h1>
+            
             <tr>
               <th>Name</th>
               <th>Email</th>

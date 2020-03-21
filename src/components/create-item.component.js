@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class CreateItem extends Component {
 
-    constructor(props) {
+    constructor(props){
         super(props);
 
         this.onChangeTitle = this.onChangeTitle.bind(this);        // bind values
@@ -11,23 +11,15 @@ export default class CreateItem extends Component {
         this.onChangePrice = this.onChangePrice.bind(this);
         this.onChangeImg = this.onChangeImg.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.onChangeID = this.onChangeID.bind(this);
 
-        this.state = {
-
-            title: '',
-            description: '',
-            price: 0,
-            img: '',
-            id: 0
+        this.state ={
+            title:'',
+            description:'',
+            price:0,
+            img:''
         }
     }
-
-    onChangeID(e) {
-        this.setState({
-            id: e.target.value
-        });
-    }
+    
     onChangeTitle(e) {
         this.setState({
             title: e.target.value
@@ -49,83 +41,75 @@ export default class CreateItem extends Component {
         });
     }
 
-    onSubmit(e) {
+    onSubmit(e){
         e.preventDefault();
 
         const item = {
-            id: this.state.id,
             title: this.state.title,
             description: this.state.description,
             price: this.state.price,
             img: this.state.img
         }
-        axios.post('http://localhost:5000/items/add', item)
-            .then(res => console.log(res.data));
-        window.location = '/';
+        console.log("7777777777777777777777777777777777777777777777777777777777777777777");
+        axios.post('http://localhost:5000/items/add',item)
+        .then(res => console.log(res.data));
+         window.location = '/';
     }
+    
 
-    render() {
-        return (
+    render()
+    {
+        return(
             <div>
                 <h3>Create New Item</h3>
-
                 <form onSubmit={this.onSubmit}>
+                  <div className="form-group"> 
+                    <label>Item Title: </label>
+                    <input  type="text"
+                     required
+                     className="form-control"
+                     value={this.state.title}
+                     onChange={this.onChangeTitle}
+                    />
+                </div>
 
-                    <div className="form-group">
-                        <label>Item ID: </label>
-                        <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.Id}
-                            onChange={this.onChangeID}
-                        />
-                    </div>
+                <div className="form-group"> 
+                    <label>Item Discrption: </label>
+                    <input  type="text"
+                     required
+                     className="form-control"
+                     value={this.state.description}
+                     onChange={this.onChangeDescription}
+                    />
+                </div>
 
-                    <div className="form-group">
-                        <label>Item Title: </label>
-                        <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.title}
-                            onChange={this.onChangeTitle}
-                        />
-                    </div>
+                <div className="form-group"> 
+                    <label>Item Price: </label>
+                    <input  type="text"
+                     required
+                     className="form-control"
+                     value={this.state.price}
+                     onChange={this.onChangePrice}
+                    />
+                </div>
 
-                    <div className="form-group">
-                        <label>Item Discrption: </label>
-                        <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.description}
-                            onChange={this.onChangeDescription}
-                        />
-                    </div>
+                <div className="form-group"> 
+                    <label>Item Image URL: </label>
+                    <input  type="text"
+                     required
+                     className="form-control"
+                     value={this.state.img}
+                     onChange={this.onChangeImg}
+                    />
+                </div>
 
-                    <div className="form-group">
-                        <label>Item Price: </label>
-                        <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.price}
-                            onChange={this.onChangePrice}
-                        />
-                    </div>
 
-                    <div className="form-group">
-                        <label>Item Image URL: </label>
-                        <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.img}
-                            onChange={this.onChangeImg}
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <input type="submit" value="Create Item" className="btn btn-primary" />
-                    </div>
+                 <div className="form-group">
+                   <input type="submit" value="Create Item" className="btn btn-primary" />
+                </div>
                 </form>
             </div>
         )
     }
-}
+
+}    

@@ -7,30 +7,32 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+
 router.route('/add').post((req, res) => {
+  console.log(" Admin create ddddddddddddddddddddddddddd")
+  console.log(req.body.title)
+  console.log(req.body.description )
+  console.log(req.body.price )
+  console.log(req.body.img )
+    const title = req.body.title;
+    const description = req.body.description;
+    const price = Number(req.body.price);
+    const img = req.body.img;
+  
+    const newItem = new Item({
 
+      title,
+      description,
+      price,
+      img,
 
-  const title = req.body.title;
-  const description = req.body.description;
-  const price = Number(req.body.price);
-  const img = req.body.img;
-  const id = req.body.id;
-
-  const newItem = new Item({
-
-    title,
-    description,
-    price,
-    img,
-    id,
-
-  });
-
-  newItem.save()
+    });
+  
+    newItem.save()
     .then(() => res.json('Item added!'))
     .catch(err => res.status(400).json('Error: ' + err));
-
-});
+ 
+ });
 
 router.route('/:id').get((req, res) => {    // mongo auto id
   Item.findById(req.params.id)
@@ -44,12 +46,10 @@ router.route('/:id').delete((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) => {
-  console.log(req.params.id)
-  Item.findById(req.params.id)
+router.route('/update').put((req, res) => {
+  console.log("Edit Item Recieved00000000000")
+  Item.findById(req.body.id)
     .then(item => {
-      // item.title = req.body.title;
-      item.id = req.body.id;
       item.title = req.body.title;
       item.description = req.body.description;
       item.price = Number(req.body.price);
