@@ -45,6 +45,7 @@ export default class Cart extends React.Component {
 		localStorage.setItem('cart', JSON.stringify(cart));
 		let total = this.state.total - (product.qty * product.price) 
 		this.setState({products, total});
+		window.location.reload(false);
 	}
 
 
