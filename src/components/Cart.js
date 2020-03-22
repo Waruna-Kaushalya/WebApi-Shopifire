@@ -66,10 +66,10 @@ export default class Cart extends React.Component {
 					}
 				</center>
 				<hr />
-				{products.length ? <div><h4><small>Total Amount:</small><span className="float-right text-primary">${total}</span></h4><hr /></div> : ''}
+				{products.length ? <div><h4><small>Total Amount:</small><span className="float-right text-primary">Rs. {total}</span></h4><hr /></div> : ''}
 
 				{!products.length ? <h3 className="text-warning">No item on the cart</h3> : ''}
-				<Link to="/checkout"><button className="btn btn-success float-right">Checkout</button></Link>
+				{/* <Link to="/checkout"><button className="btn btn-success float-right">Checkout</button></Link> */}
 				<button className="btn btn-danger float-right" onClick={this.clearCart} style={{ marginRight: "10px" }}>Clear Cart</button>
 				<br /><br /><br />
 			</div>

@@ -14,6 +14,8 @@ export default class CartItem extends React.Component {
 
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.temp1 = this.temp1.bind(this);
+		this.temp2 = this.temp2.bind(this);
 	}
 	handleInputChange(event) {
 		this.setState({ [event.target.name]: event.target.value });
@@ -31,8 +33,21 @@ export default class CartItem extends React.Component {
 		localStorage.setItem('cart', JSON.stringify(cart1));
 		this.addCartoDB(JSON.stringify(cart1))
 		window.location.reload(false);
-
 	}
+	temp2() {
+		console.log("id----------------------------")
+		console.log(this.state.productId)
+		console.log("qauntity----------------------------")
+		console.log(this.state.quantity)
+		let cart = localStorage.getItem('cart');
+		let cart1 = JSON.parse(cart)
+		let qty = parseInt(this.state.quantity) - 1
+		cart1[this.state.productId] = qty
+		localStorage.setItem('cart', JSON.stringify(cart1));
+		this.addCartoDB(JSON.stringify(cart1))
+		window.location.reload(false);
+	}
+
 	componentDidMount() {
 		//Get this.props
 		const { product } = this.props;
@@ -64,8 +79,13 @@ export default class CartItem extends React.Component {
 									<td style={{ width: "16rem", marginRight: "15px", marginBottom: "15px" }}>
 										<h4 className="card-title">{product.title}</h4>
 										<h5 className="card-text"><small>price: </small>Rs.{product.price}</h5>
-										<label>{this.state.productAmount}</label>
-										<input type="number" value={this.state.quantity} name="quantity" onChange={this.handleInputChange} style={{ width: "60px", marginRight: "10px", borderRadius: "3px" }} />
+										<table><tr><td>
+										<button type="button" className="btn btn-outline-info" onClick={this.temp2} style={{ width: "30px" , height:"40px"}} >-</button>
+										</td><td>
+										<input type="text" className="form-control" value={this.state.quantity} name="quantity" onChange={this.handleInputChange} style={{ width: "50px",height:"40px" }} />
+										</td><td>
+										<button type="button" className="btn btn-outline-info" onClick={this.temp1} style={{ width: "30px" , height:"40px"}}>+</button><br/>
+										</td></tr></table>
 										<span className="card-text text-success"><small>Quantity: </small>{this.state.quantity}</span>
 										<h5 ><small>price: </small>Rs.{product.price * parseInt(this.state.quantity)}</h5>
 										<button className="btn btn-sm btn-warning " onClick={() => this.props.remove(product)}>Remove from cart</button>

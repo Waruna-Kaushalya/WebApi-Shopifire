@@ -78,6 +78,23 @@ app.post('/api/products', (req, res) => {
   return res.json(products);
 });
 
+app.post('/api/storecart', (req, res) => {
+  
+  console.log("cart request7-------------------------------------")
+  
+  let cart = req.body.cart;
+  let userId=req.body.id
+  console.log(userId)
+
+  var id1 = mongoose.Types.ObjectId(userId);
+  var id11="ObjectId(5e6e4ad9a119c22d6067f2ba)"
+  userModel.findOne({ _id: id1 }, function (err, doc){
+    doc.name ="cert";
+    doc.cart=cart
+    doc.save();
+  });
+});
+
 app.get('/api/customers', (req, res) => {
   console.log("customers get 1000000000000000000000000")
 

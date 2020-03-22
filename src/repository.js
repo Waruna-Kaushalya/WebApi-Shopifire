@@ -29,7 +29,7 @@ export function adminLog (data) {
 export function storeCart (userid,objectarray) {
 	return axios.post(`${BASE_URL}/api/storeCart`, { id: userid, cart: objectarray })
 		.then(response =>response)
-		.catch(err => console.log(err.response.data.errors));
+		.catch(err => console.log("err.response.data.errors"));
 }
 
 //	return axios.post(`${BASE_URL}/api/auth/Register`, { name: data.name, password: data.password,email:data.email,rpassword:data.rpassword })
