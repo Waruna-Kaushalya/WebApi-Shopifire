@@ -25,7 +25,7 @@ app.use('/items', itemsRouter);
 const mongoose = require('./config/keys');
 var Schema = mongoose.Schema;
 
-var fenceNodeConnection = new Schema({
+var productDataSchema = new Schema({
 
   id: Number,
   name: String,
@@ -33,10 +33,9 @@ var fenceNodeConnection = new Schema({
   price: Number,
   image: String,
   description: String
-
 }, { collection: 'items', versionKey: false });
 
-var fenceNodeConnection = mongoose.model('fenceNodeConnection', fenceNodeConnection);
+var productDataSchema = mongoose.model('productDataSchema', productDataSchema);
 
 var arrayB = [];
 
@@ -44,7 +43,7 @@ app.get('/api/products', (req, res) => {
 
   var arrayA = [];
 
-  fenceNodeConnection.find()
+  productDataSchema.find()
     .then(function (doc) {
       if (doc) {
         for (var i = 0; i < doc.length; i++) {
@@ -56,9 +55,7 @@ app.get('/api/products', (req, res) => {
       else {
         console.log("detabases error");
       }
-
     });
-
 });
 
 app.post('/api/products', (req, res) => {
@@ -79,8 +76,6 @@ app.post('/api/products', (req, res) => {
 });
 
 app.post('/api/storecart', (req, res) => {
-  
-  console.log("cart request7-------------------------------------")
   
   let cart = req.body.cart;
   let userId=req.body.id
