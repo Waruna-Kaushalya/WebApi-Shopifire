@@ -1,14 +1,12 @@
 var mongooseconn = require('mongoose');
 
-// newDB MongoAtlas
+// newDB
 const db = 'mongodb+srv://Waruna:1qaz@shopifirebackupcluster-nir4u.mongodb.net/shopifire?retryWrites=true&w=majority'
 
-// oldDB MongoAtlas
+// oldDB
 // const db = 'mongodb+srv://Waruna:1qaz@shopifirecluster-qkn98.mongodb.net/shopifire?retryWrites=true&w=majority'
 
-// localDB
-// const db = 'mongodb://localhost/shopifireDB'
-
+mongooseconn.connect(process.env.MONGODB_URL || db, function (error) 
 
 {
     if (error == null) {
