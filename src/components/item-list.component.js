@@ -9,7 +9,7 @@ const Item = props => (
     <td>{props.item.price}</td>
     <td>{props.item.img}</td>
     <td>
-      <Link to={"/edit/" + props.item._id}>edit</Link> | <a href="#" onClick={() => { props.deleteItem(props.item._id) }}>delete</a>
+      <Link to={"/edit/" + props.item._id}>edit</Link> | <a  style={{ color: "red" }}onClick={() => { props.deleteItem(props.item._id) }}>delete</a>
     </td>
   </tr>
 )

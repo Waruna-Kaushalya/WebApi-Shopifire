@@ -67,8 +67,8 @@ export default class EditItem extends Component {
         }
         console.log(item);
         axios.put('http://localhost:5000/items/update',item)// axios.post('http://localhost:5000/items/update/'+this.props.match.params.id,item)
-        .then(res => console.log(res.data));
-         window.location = '/';
+        .then(res =>{ window.location = '/AdminItems/'});
+         
     }
     
 

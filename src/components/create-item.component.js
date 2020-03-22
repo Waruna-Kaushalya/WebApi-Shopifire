@@ -51,9 +51,9 @@ export default class CreateItem extends Component {
             img: this.state.img
         }
         console.log("7777777777777777777777777777777777777777777777777777777777777777777");
-        axios.post('http://localhost:5000/items/add',item)
+        axios.post(`http://localhost:5000/items/add`,item)
         .then(res => console.log(res.data));
-         window.location = '/';
+         window.location = '/AdminItems/';
     }
     
 
