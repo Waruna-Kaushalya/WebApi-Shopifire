@@ -15,7 +15,7 @@ export default class ProductItem extends React.Component {
 	handleInputChange = event => this.setState({ [event.target.name]: event.target.value })
 
 	addToCart = () => {
-		if(localStorage.userObject980)
+	if(localStorage.userObject980)
         {	let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
 		let id = this.props.product._id;
 		
