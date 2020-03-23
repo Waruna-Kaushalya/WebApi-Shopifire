@@ -36,7 +36,6 @@ export default class Login extends React.Component {
       console.log("response name")
       console.log(token.name)
       var testObject = { 'one': 651, 'two': 2, 'three': 3 };
-
       console.log(testObject.one)
       localStorage.setItem("userObject980", JSON.stringify(token));
       localStorage.setItem("userObject980logstatus", true);
@@ -44,23 +43,18 @@ export default class Login extends React.Component {
       var cart = JSON.parse(response.data.cart)
       localStorage.setItem('cart', JSON.stringify(cart));
       this.showAlert()
-      // window.location = '/'
 
     }
     else if (x === 274) {
       this.showErrorAlert()
       this.setState({
-
         emaillabel: "The email address which you enterd does nort exist."
-
       });
     }
     else if (x === 275) {
       this.showErrorAlert()
       this.setState({
-
         passwordlabel: "The password which you enterd is incorrect."
-
       });
     }
     else {
@@ -68,10 +62,8 @@ export default class Login extends React.Component {
       console.log("fail response  empty 1112")
       console.log(response.data.passwordmessage)
       this.setState({
-
         emaillabel: response.data.emailmessage,
         passwordlabel: response.data.passwordmessage,
-
       });
     }
   }
@@ -100,14 +92,11 @@ export default class Login extends React.Component {
           label: 'OK',
           onClick: () => window.location = '/'
         },
-
       ]
-    })//.showAlert();
-
+    })
   };
 
   showErrorAlert = () => {
-    // const r =window.alert("Do you really want to Sign Out?"); if(r == true){ }
     confirmAlert({
       title: 'Invalid Details!',
       message: 'Please enter valid details in the realvent text fields',
@@ -116,9 +105,8 @@ export default class Login extends React.Component {
           label: 'OK',
           onClick: () => { }
         },
-
       ]
-    })//.showAlert();
+    })
   };
 
   tempfunc2() {

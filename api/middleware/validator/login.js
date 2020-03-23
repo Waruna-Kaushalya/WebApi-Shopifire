@@ -1,6 +1,4 @@
 const userModel = require('../../models/user')
-const Validator = require("validator");
-const isEmpty = require("is-empty");
 module.exports = (req, res, next) => {
   const user = new userModel(req.body);
   var status = true;
@@ -19,9 +17,7 @@ module.exports = (req, res, next) => {
 
     errorList.passwordmessage = emptytextFieldMessage
   }
-
-  //console.log(name+" "+email+" "+password+" "+rpassword)
-
+  
   if (!status) { res.status(202).json(errorList); }
   else {
     next()

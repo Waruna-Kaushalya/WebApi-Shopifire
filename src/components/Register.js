@@ -17,13 +17,10 @@ export default class Register extends React.Component {
     this.setState({ [event.target.name]: event.target.value })
   }
   submitRegister(event) {
-
     this.clearLabel()
-
-    // this.tempfunc();
     event.preventDefault();
     register(this.state)
-      .then(response => { this.handleResponse(response) })                           //token => window.location = '/' //token =>this.tempfunc()
+      .then(response => { this.handleResponse(response) })
       .catch(err => console.log(err.response.data.errors));
   }
   handleResponse(response) {
@@ -41,13 +38,10 @@ export default class Register extends React.Component {
       localStorage.setItem("userObject980logstatus", true);
       localStorage.setItem("jwtToken1", "tokengraphy");
       this.showAlert()
-
     }
     else if (x === 274) {
       this.setState({
-
         emaillabel: "Email Already Exists"
-
       });
       this.showErrorAlert()
     }
@@ -59,14 +53,12 @@ export default class Register extends React.Component {
         emaillabel: response.data.emailmessage,
         passwordlabel: response.data.passwordmessage,
         rpasswordlabel: response.data.rpasswordmessage
-
       });
       this.showErrorAlert()
     }
   }
 
   showAlert = () => {
-
     confirmAlert({
       title: 'Registration Successfull!',
       message: 'You have successfully registerd your account.\n Welcome to ShopiFire!!!',
@@ -75,14 +67,11 @@ export default class Register extends React.Component {
           label: 'OK',
           onClick: () => window.location = '/'
         },
-
       ]
-    })//.showAlert();
-
+    })
   };
 
   showErrorAlert = () => {
-    // const r =window.alert("Do you really want to Sign Out?"); if(r == true){ }
     confirmAlert({
       title: 'Invalid Details!',
       message: 'Please enter valid details in the realvent text fields',
@@ -91,9 +80,8 @@ export default class Register extends React.Component {
           label: 'OK',
           onClick: () => { }
         },
-
       ]
-    })//.showAlert();
+    })
   };
 
   tempfunc() {
@@ -108,7 +96,6 @@ export default class Register extends React.Component {
       emaillabel: '',
       passwordlabel: '',
       rpasswordlabel: ''
-
     });
   }
 
@@ -118,15 +105,13 @@ export default class Register extends React.Component {
       email: '',
       password: '',
       rpassword: ''
-
     });
 
   }
   tempfunc2() {
-    // alert.show(<div style={{ color: 'blue' }}>Some Message</div>)
     if (localStorage.userObject980) {
       var retrievedObject = localStorage.getItem('userObject980');
-      var retrievedObject2 = localStorage.getItem('userObject980logstatus');//userObject980logstatus
+      var retrievedObject2 = localStorage.getItem('userObject980logstatus');
       var z = JSON.parse(retrievedObject)
       console.log("zonet")
       console.log(z.name);

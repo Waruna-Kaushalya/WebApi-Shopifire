@@ -10,7 +10,6 @@ const jwt = require("jsonwebtoken");
 
 app.post("/", async (req, res) => {
 
-
   console.log("userroute reques recieved")
   console.log("registern----------------")
   User.findOne({ email: req.body.email }).then(user => {
@@ -18,7 +17,6 @@ app.post("/", async (req, res) => {
       return res.status(274).json("Email already exists");
     } else {
       console.log("registration end")
-
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(req.body.password, salt, (err, hash) => {
           if (err) throw err;
@@ -30,10 +28,7 @@ app.post("/", async (req, res) => {
             .catch(err => console.log(err));
         });
       });
-
-
     }
   });
-  // console.log(req.body.password)
 });
 module.exports = app

@@ -1,6 +1,5 @@
 const userModel = require('../../models/user')
 const Validator = require("validator");
-const isEmpty = require("is-empty");
 module.exports = (req, res, next) => {
   const user = new userModel(req.body);
   var status = true;
