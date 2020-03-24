@@ -38,6 +38,21 @@ export function register(data) {
 	return axios.post(`${BASE_URL}/api/auth/Register`, { name: data.name, password: data.password,rpassword:data.rpassword,email:data.email })
 		.then(response=> response).catch(err => console.log(err.response.data.errors));
 }
+export function searchFunction1 (searchvalue,packaging,location,minvalue,maxvalue) {//
+	var testname1="surainsearch"
+	return axios.get(`${BASE_URL}/api/test`, {
+		params: {
+		  Searchvalue:searchvalue,
+		  Packaging:packaging,
+		  Location:location,
+		  Minvalue:minvalue,
+		  Maxvalue:maxvalue
+		}
+	  })
+		.then(response =>response.data)
+		.catch(err => console.log(err.response.data.errors));
+}
+
 
 export function isAuthenticated(){
 	return localStorage.getItem('x-access-token') && localStorage.getItem('x-access-token-expiration') > Date.now()

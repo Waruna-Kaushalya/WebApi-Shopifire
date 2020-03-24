@@ -1,0 +1,113 @@
+body {margin:0;}
+#filter {
+    overflow: hidden;
+    background-color:white;
+    position: fixed;
+    top: 5;
+    width: 80%;
+    margin: 0 auto;
+    z-index: 500;
+    
+    
+  }
+
+
+  
+  #filter h1 {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  #filter h1 {
+   
+    color:red;
+  }
+  #searchbox {
+    width: 120px;
+    margin: auto;
+   
+  }
+  #searchboxdiv {
+    width: 200px;
+    margin: auto;
+    
+  }
+  #outer {
+   align-items: center;
+    width:100%
+    
+  }
+  .form {
+    margin: 0 auto;
+    padding: 100px 30px 0;
+  
+    @media (min-width: 800px) {
+      max-width: 60%;
+    }
+  }
+  
+  .input-range {
+    margin-bottom: 160px;
+  }
+
+  #a11 {
+    width: 500px;
+    
+  }
+  #a12 {
+    width: 500px;
+    
+  }
+  .form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  
+  /* Add some margins for each label */
+  .form-inline label {
+    margin: 5px 10px 5px 0;
+  }
+  
+  /* Style the input fields */
+  .form-inline input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style the submit button */
+  .form-inline button {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+  }
+  
+  .form-inline button:hover {
+    background-color: royalblue;
+  }
+  tr {
+   
+   
+    height:60px;               
+    }
+
+    InputRange{
+      
+      
+      height: 10px;
+    }
+  
+  /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+ 
+
+
+ 

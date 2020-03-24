@@ -11,6 +11,7 @@ const userRoute = require('../api/routes/register')
 const morgan = require('morgan')
 const loginRoute = require('../api/routes/login')
 const adminloginRoute = require('../api/routes/adminLog')
+const itemModel=require('../api/models/item.model')
 
 require('dotenv').config();
 
@@ -104,6 +105,107 @@ app.delete('/api/customers/:id', (req, res) => {
   userModel.findByIdAndDelete(req.params.id)
     .then(() => res.json('Item deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
+});
+
+app.get('/api/test', (req, res) => {
+  var GoodConnection=[];
+  var BadConnection =[];
+  var arrayA = [];
+  console.log("search functon recieved")
+ var a=req.param('Searchvalue')
+ 
+  let searchterm=req.param('Searchvalue').trim()
+  itemModel.find()
+      .then(function (doc) {
+          if (doc)
+          {
+              for (var i=0;i<doc.length;i++)
+              {
+                var  itemobj=doc[i]
+              // console.log(itemobj.title)
+              if ((searchterm == null) || (searchterm === "")) {
+                if((itemobj.description.toLowerCase().includes(req.param('Location').toLowerCase()))&&(itemobj.price<req.param('Maxvalue'))&&(itemobj.price>req.param('Minvalue')))//&&itemobj.price>10//&&(itemobj.price<parent(req.param('Maxvalue')) )&&(itemobj.price<parent(req.param('Minvalue')) )
+                {
+                  if (req.param('Packaging')=="Unpackaged")
+                  {
+                    if(itemobj.description.toLowerCase().includes("Unpackaged".toLowerCase()))
+                    {
+                      arrayA.push(doc[i])
+
+                    }
+                    
+
+                  }
+                  else if(req.param('Packaging')=="a")
+                  {
+                    arrayA.push(doc[i])
+
+                  }
+                  else
+                  {
+                    if(!itemobj.description.toLowerCase().includes("Unpackaged".toLowerCase()))
+                    {
+                      arrayA.push(doc[i])
+
+                    }
+
+                  }
+                  
+                 
+                 
+                  console.log('\u001b[1;35m'+itemobj.title)}
+               
+              }
+              else
+              {
+                 if(  (itemobj.title.toLowerCase().includes(searchterm.toLowerCase())) && (itemobj.description.toLowerCase().includes(req.param('Location').toLowerCase()))&&(itemobj.price<req.param('Maxvalue'))&&(itemobj.price>req.param('Minvalue')))//&&itemobj.price>10//&&(itemobj.price<parent(req.param('Maxvalue')) )&&(itemobj.price<parent(req.param('Minvalue')) )
+                {
+                  if (req.param('Packaging')=="Unpackaged")
+                  {
+                    if(itemobj.description.toLowerCase().includes("Unpackaged".toLowerCase()))
+                    {
+                      arrayA.push(doc[i])
+
+                    }
+                    
+
+                  }
+                  else if(req.param('Packaging')=="a")
+                  {
+                    arrayA.push(doc[i])
+
+                  }
+                  else
+                  {
+                    if(!itemobj.description.toLowerCase().includes("Unpackaged".toLowerCase()))
+                    {
+                      arrayA.push(doc[i])
+
+                    }
+
+                  }
+                  
+                 
+                 
+                  console.log('\u001b[1;35m'+itemobj.title)}
+              }
+
+
+              }
+              
+             
+              // console.log("ssssssssssssssssssss")
+              return res.json(arrayA);
+
+          }
+          else
+          {
+              console.log("detabases error");
+          }
+
+      });
+  
+  console.log("------------------------------------------------------search recieved")
 });
 
 
