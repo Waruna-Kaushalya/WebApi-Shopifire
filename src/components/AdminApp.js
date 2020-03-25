@@ -7,6 +7,7 @@ import ItemList from "./item-list.component";
 import EditItem from "./edit-item.component";
 import CreateItem from "./create-item.component";
 import AdminCustomers from "./view-users.component"
+import AdminProfile from "./adminProfile.component"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/edit/:id" component={EditItem} />
         <Route path="/create" component={CreateItem} />
         <Route path="/admincustomers" component={AdminCustomers} />
+        <Route path="/adminprofile" component={AdminProfile} />
       </div>
     </Router>
   );

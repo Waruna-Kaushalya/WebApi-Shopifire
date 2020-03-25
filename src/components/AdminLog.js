@@ -5,7 +5,7 @@ export default class AdminLog extends React.Component {
 
   constructor() {
     super();
-    this.state = { name: '', password: '' };
+    this.state = { name: '', password: '',emaillabel:'',passwordlabel:'' };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitLogin = this.submitLogin.bind(this);
   }
@@ -16,6 +16,7 @@ export default class AdminLog extends React.Component {
 
   submitLogin(event) {
     event.preventDefault();
+    this.clearLabel()
     adminLog(this.state)
       .then(response => { this.handleResponse(response) })
       .catch(err => alert(err));
@@ -27,18 +28,16 @@ export default class AdminLog extends React.Component {
     console.log("status sis")
     console.log(x)
     if (x === 200) {
+      this.clearTextFields()
       console.log("suscees response 1")
-      console.log(response.data.name)
+  
       const token = response.data;
-      console.log("response name")
-      console.log(token.name)
-      var testObject = { 'one': 651, 'two': 2, 'three': 3 };
-      console.log(testObject.one)
-      localStorage.setItem("userObject980", JSON.stringify(token));
-      localStorage.setItem("userObject980logstatus", true);
-      localStorage.setItem("jwtToken1", "tokengraphy");
+     
+     
+      localStorage.setItem("userObject981", JSON.stringify(token));
 
-      // window.location = '/'
+
+    window.location = '/AdminItems/'
 
 
     }
@@ -46,13 +45,17 @@ export default class AdminLog extends React.Component {
       console.log("fail response  empty274")
       this.setState({
 
-        emaillabel: "Email Already Exists"
+        emaillabel: "Email does not exist"
 
       });
     }
     else {
       console.log("fail response  empty 1112")
-      console.log(response.data.passwordmessage)
+      this.setState({
+
+        passwordlabel: "The password which you enterd is incorrect"
+
+      });
     }
 
   }
@@ -61,6 +64,20 @@ export default class AdminLog extends React.Component {
     localStorage.removeItem("userObject980");
     localStorage.removeItem("userObject980logstatus")
     localStorage.removeItem("cart")
+  }
+  clearLabel() {
+    this.setState({
+      passwordlabel: '',
+      emaillabel: ''
+    });
+  }
+
+  clearTextFields() {
+    this.setState({
+      name: '',
+      password: ''
+    });
+
   }
 
   tempfunc2() {
@@ -75,7 +92,18 @@ export default class AdminLog extends React.Component {
       var retrievedObject = localStorage.getItem('userObject980');
       var retrievedObject2 = localStorage.getItem('userObject980logstatus');//userObject980logstatus
       var z = JSON.parse(retrievedObject)
-      console.log("zonet")
+      console.log("ord user")
+      console.log(z.name);
+      console.log(z.email);
+      console.log(z._id)
+      console.log("logstatus")
+      console.log(retrievedObject2)
+    }
+    else if (localStorage.userObject981) {
+      var retrievedObject = localStorage.getItem('userObject981');
+     // var retrievedObject2 = localStorage.getItem('userObject980logstatus');//userObject980logstatus
+      var z = JSON.parse(retrievedObject)
+      console.log("Admin user")
       console.log(z.name);
       console.log(z.email);
       console.log(z._id)
@@ -100,10 +128,12 @@ export default class AdminLog extends React.Component {
                 <div className="form-group">
                   <label>Name:</label>
                   <input type="text" className="form-control" name="name" onChange={this.handleInputChange} />
+                  <label><font color="red">{this.state.emaillabel}</font></label>
                 </div>
                 <div className="form-group">
                   <label>Password:</label>
                   <input type="password" className="form-control" name="password" onChange={this.handleInputChange} />
+                  <label><font color="red">{this.state.passwordlabel}</font></label>
                 </div>
                 <button type="submit" className="btn btn-default">Submit</button>
               </form>
