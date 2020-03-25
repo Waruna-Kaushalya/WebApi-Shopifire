@@ -31,12 +31,12 @@ export default class Login extends React.Component {
     if (x === 200) {
       console.log("suscees response 1")
       this.clearTextFields()
-      console.log(response.data.name)
+      //console.log(response.data.name)
       const token = response.data;
-      console.log("response name")
-      console.log(token.name)
-      var testObject = { 'one': 651, 'two': 2, 'three': 3 };
-      console.log(testObject.one)
+      //console.log("response name")
+      //console.log(token.name)
+      //var testObject = { 'one': 651, 'two': 2, 'three': 3 };
+     // console.log(testObject.one)
       localStorage.setItem("userObject980", JSON.stringify(token));
       localStorage.setItem("userObject980logstatus", true);
       localStorage.setItem("jwtToken1", "tokengraphy");

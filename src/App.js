@@ -6,6 +6,9 @@ import Cart from './components/Cart';
 import AdminLog from './components/AdminLog'
 import ItemList from "./components/item-list.component";
 import AdminApp from "./components/AdminApp"
+import UserProfile from "./components/UserProfile"
+import EditProfile from "./components/EditProfile"
+import EditPassword from "./components/Editpassword"
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { isAuthenticated } from './repository';
 
@@ -64,7 +67,7 @@ class App extends Component {
 
                   {
                     (this.state.loggedinStatus) ?
-                      (<Link className="nav-item nav-link" to="/">User</Link>) : ''
+                      (<Link className="nav-item nav-link" to="/UserProfile">User</Link>) : ''
                   }
                 </div>
               </div>
@@ -76,6 +79,9 @@ class App extends Component {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/AdminLog" component={AdminLog} />
             <Route exact path="/AdminItems" component={AdminApp} />
+            <Route exact path="/UserProfile" component={UserProfile} />
+            <Route exact path="/EditProfile" component={EditProfile} />
+            <Route exact path="/EditPassword" component={EditPassword} />
             {(!auth) ? <Route exact path="/login" component={Login} /> : ''}
             {(!auth) ? <Route exact path="/register" component={Register} /> : ''}
 

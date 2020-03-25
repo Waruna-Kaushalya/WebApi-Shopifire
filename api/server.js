@@ -7,11 +7,16 @@ const bodyParser = require('body-parser');
 const userModel = require('../api/models/user');
 const validate = require('../api/middleware/validator/register')
 const loginValidate = require('../api/middleware/validator/login')
+const EditUserDetailsValidate = require('../api/middleware/validator/EditUserDetails')
 const userRoute = require('../api/routes/register')
+const editProfileRoute = require('../api/routes/editUserDetails')
 const morgan = require('morgan')
 const loginRoute = require('../api/routes/login')
 const adminloginRoute = require('../api/routes/adminLog')
+const passwordRoute = require('../api/routes/editpassword')
+const EditPasswordValidate = require('../api/middleware/validator/EditPassword')
 const itemModel=require('../api/models/item.model')
+
 
 require('dotenv').config();
 
@@ -60,7 +65,7 @@ app.get('/api/products', (req, res) => {
 });
 
 app.post('/api/products', (req, res) => {
-
+  console.log('\u001b[1;35m api/products')
   let products = [], id = null;
   let cart = JSON.parse(req.body.cart);
   if (!cart) return res.json(products)
@@ -77,18 +82,19 @@ app.post('/api/products', (req, res) => {
 });
 
 app.post('/api/storecart', (req, res) => {
-  
+  console.log('\u001b[1;35m mmmmmmmmmmmmmmmmmmmmm')
   let cart = req.body.cart;
   let userId=req.body.id
-  console.log(userId)
+  console.log('\u001b[1;35m'+cart)
 
   var id1 = mongoose.Types.ObjectId(userId);
   var id11="ObjectId(5e6e4ad9a119c22d6067f2ba)"
   userModel.findOne({ _id: id1 }, function (err, doc){
-    doc.name ="cert";
+    
     doc.cart=cart
-    doc.save();
-  });
+     doc.save();
+     return res.status(200).json("");
+   });
 });
 
 app.get('/api/customers', (req, res) => {
@@ -213,6 +219,8 @@ app.get('/api/test', (req, res) => {
 app.use('/api/auth/login', loginValidate, loginRoute);
 app.use('/api/auth/register', validate, userRoute);
 app.use('/api/auth/adminLog', loginValidate, adminloginRoute);
+app.use('/api/EditUserDetails', EditUserDetailsValidate, editProfileRoute);
+app.use('/api/EditPassword', EditPasswordValidate, passwordRoute);
 
 const PORT = process.env.PORT || 5000;
 

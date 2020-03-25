@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getCartProducts } from '../repository';
 import CartItem from './CartItem';
+import { storeCart } from '../repository';
 
 export default class Cart extends React.Component {
 	constructor(props) {
@@ -38,6 +39,16 @@ export default class Cart extends React.Component {
 
 	}
 
+	addCartoDB(objectarray) {
+		console.log("helloooo addcarttodb") 
+
+		var retrievedObject = localStorage.getItem('userObject980');
+		var z = JSON.parse(retrievedObject)
+		var userid = z._id
+		storeCart(userid, objectarray) .then(response => {console.log("Response recieved");window.location.reload(false); })
+		.catch();
+	}
+
 	removeFromCart = (product) => {
 		let products = this.state.products.filter((item) => item._id !== product._id);
 		let cart = JSON.parse(localStorage.getItem('cart'));
@@ -45,7 +56,8 @@ export default class Cart extends React.Component {
 		localStorage.setItem('cart', JSON.stringify(cart));
 		let total = this.state.total - (product.qty * product.price) 
 		this.setState({products, total});
-		window.location.reload(false);
+		this.addCartoDB(JSON.stringify(cart))
+		//window.location.reload(false);
 	}
 
 

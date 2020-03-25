@@ -31,8 +31,9 @@ export default class CartItem extends React.Component {
 		let qty = parseInt(this.state.quantity) + 1
 		cart1[this.state.productId] = qty
 		localStorage.setItem('cart', JSON.stringify(cart1));
+		console.log("hello temp 1")
 		this.addCartoDB(JSON.stringify(cart1))
-		window.location.reload(false);
+		//window.location.reload(false);
 	}
 	temp2() {
 		console.log("id----------------------------")
@@ -45,7 +46,7 @@ export default class CartItem extends React.Component {
 		cart1[this.state.productId] = qty
 		localStorage.setItem('cart', JSON.stringify(cart1));
 		this.addCartoDB(JSON.stringify(cart1))
-		window.location.reload(false);
+		//window.location.reload(false);
 	}
 
 	componentDidMount() {
@@ -58,11 +59,13 @@ export default class CartItem extends React.Component {
 	};
 
 	addCartoDB(objectarray) {
+		console.log("helloooo addcarttodb") 
 
 		var retrievedObject = localStorage.getItem('userObject980');
 		var z = JSON.parse(retrievedObject)
 		var userid = z._id
-		storeCart(userid, objectarray)
+		storeCart(userid, objectarray) .then(response => {console.log("Response recieved");window.location.reload(false); })
+		.catch();
 	}
 
 	render() {
