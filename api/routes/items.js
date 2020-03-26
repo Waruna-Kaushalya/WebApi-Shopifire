@@ -11,28 +11,28 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   console.log(" Admin create ddddddddddddddddddddddddddd")
   console.log(req.body.title)
-  console.log(req.body.description )
-  console.log(req.body.price )
-  console.log(req.body.img )
-    const title = req.body.title;
-    const description = req.body.description;
-    const price = Number(req.body.price);
-    const img = req.body.img;
-  
-    const newItem = new Item({
+  console.log(req.body.description)
+  console.log(req.body.price)
+  console.log(req.body.img)
+  const title = req.body.title;
+  const description = req.body.description;
+  const price = Number(req.body.price);
+  const img = req.body.img;
 
-      title,
-      description,
-      price,
-      img,
+  const newItem = new Item({
 
-    });
-  
-    newItem.save()
+    title,
+    description,
+    price,
+    img,
+
+  });
+
+  newItem.save()
     .then(() => res.json('Item added!'))
     .catch(err => res.status(400).json('Error: ' + err));
- 
- });
+
+});
 
 router.route('/:id').get((req, res) => {    // mongo auto id
   Item.findById(req.params.id)

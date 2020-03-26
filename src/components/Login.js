@@ -37,7 +37,7 @@ export default class Login extends React.Component {
       //console.log("response name")
       //console.log(token.name)
       //var testObject = { 'one': 651, 'two': 2, 'three': 3 };
-     // console.log(testObject.one)
+      // console.log(testObject.one)
       localStorage.setItem("userObject980", JSON.stringify(token));
       localStorage.setItem("userObject980logstatus", true);
       localStorage.setItem("jwtToken1", "tokengraphy");
@@ -138,7 +138,6 @@ export default class Login extends React.Component {
                 </div>
                 <button type="submit" class="login">Sign In</button>
               </form>
-              <button onClick={this.tempfunc2}>getstorage</button>
             </div>
           </div>
         </div>

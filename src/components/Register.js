@@ -162,8 +162,6 @@ export default class Register extends React.Component {
                 </div>
                 <button type="submit" class="login">Sign Up</button>
               </form>
-              <button onClick={this.tempfunc2}>getstorage</button>
-              <button onClick={this.logOutUser}>logout</button>
             </div>
           </div>
         </div>

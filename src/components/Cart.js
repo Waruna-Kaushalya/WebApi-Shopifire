@@ -40,13 +40,13 @@ export default class Cart extends React.Component {
 	}
 
 	addCartoDB(objectarray) {
-		console.log("helloooo addcarttodb") 
+		console.log("helloooo addcarttodb")
 
 		var retrievedObject = localStorage.getItem('userObject980');
 		var z = JSON.parse(retrievedObject)
 		var userid = z._id
-		storeCart(userid, objectarray) .then(response => {console.log("Response recieved");window.location.reload(false); })
-		.catch();
+		storeCart(userid, objectarray).then(response => { console.log("Response recieved"); window.location.reload(false); })
+			.catch();
 	}
 
 	removeFromCart = (product) => {
@@ -54,15 +54,15 @@ export default class Cart extends React.Component {
 		let cart = JSON.parse(localStorage.getItem('cart'));
 		delete cart[product._id.toString()];
 		localStorage.setItem('cart', JSON.stringify(cart));
-		let total = this.state.total - (product.qty * product.price) 
-		this.setState({products, total});
+		let total = this.state.total - (product.qty * product.price)
+		this.setState({ products, total });
 		this.addCartoDB(JSON.stringify(cart))
 		//window.location.reload(false);
 	}
 
 
 	clearCart = () => {
-		var cart={}
+		var cart = {}
 		localStorage.setItem('cart', JSON.stringify(cart));
 		this.setState({ products: [] });
 		this.addCartoDB(JSON.stringify(cart))

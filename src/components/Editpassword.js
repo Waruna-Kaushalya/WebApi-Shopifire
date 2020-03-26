@@ -20,22 +20,22 @@ export default class Register extends React.Component {
   submitProfileEdit(event) {
     this.clearLabel()
     event.preventDefault();
-   Editpassword(this.state)
-      .then(response => { 
-         this.handleResponse(response) 
-        })
+    Editpassword(this.state)
+      .then(response => {
+        this.handleResponse(response)
+      })
       .catch(
-          //err => console.log(err.response.data.errors)
-          );
+        //err => console.log(err.response.data.errors)
+      );
   }
   handleResponse(response) {
-      console.log("Handle resoponse block")
+    console.log("Handle resoponse block")
     var x = response.status
     if (x === 200) {
       this.clearTextFields()
       this.clearLabel()
-   
-     
+
+
       this.showAlert()
     }
     else if (x === 275) {
@@ -46,7 +46,7 @@ export default class Register extends React.Component {
     }
     else {
       console.log("fail response 1112")
-     console.log(response.data.passwordmessage)
+      console.log(response.data.passwordmessage)
       this.setState({
         oldpasswordlabel: response.data.oldpasswordmessage,
         npasswordlabel: response.data.npasswordmessage,
@@ -63,8 +63,9 @@ export default class Register extends React.Component {
       buttons: [
         {
           label: 'OK',
-          onClick: () => {window.location = '/UserProfile'
-        }
+          onClick: () => {
+          window.location = '/UserProfile'
+          }
         },
       ]
     })
@@ -91,7 +92,7 @@ export default class Register extends React.Component {
 
   clearLabel() {
     this.setState({
-      oldpasswordlabel:'',
+      oldpasswordlabel: '',
       npasswordlabel: '',
       rnpasswordlabel: ''
     });
@@ -99,7 +100,7 @@ export default class Register extends React.Component {
 
   clearTextFields() {
     this.setState({
-      oldpassword:'',
+      oldpassword: '',
       npassword: '',
       rnpassword: ''
     });
@@ -116,7 +117,7 @@ export default class Register extends React.Component {
   }
 
   componentWillMount() {
-   
+
   }
 
   render() {
@@ -141,18 +142,18 @@ export default class Register extends React.Component {
                   <label><font color="red">{this.state.npasswordlabel}</font></label>
                 </div>
                 <div className="form-group">
-                <label> Repeat New Password:</label>
-                <input type="password" className="form-control" name="rnpassword" onChange={this.handleInputChange} value={this.state.rnpassword} />
-                <label><font color="red">{this.state.rnpasswordlabel}</font></label>
-              </div>
-                
-              
-                <button type="submit" className="login">Submit</button> <br/>
-               
+                  <label> Repeat New Password:</label>
+                  <input type="password" className="form-control" name="rnpassword" onChange={this.handleInputChange} value={this.state.rnpassword} />
+                  <label><font color="red">{this.state.rnpasswordlabel}</font></label>
+                </div>
+
+
+                <button type="submit" className="login">Submit</button> <br />
+
               </form>
-              <br/>
+              <br />
               <button class="logout" onClick={this.backButton}>Cancel</button>
-              
+
             </div>
           </div>
         </div>

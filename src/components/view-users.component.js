@@ -52,7 +52,7 @@ export default class ItemList extends Component {
         <h3>Customer List</h3>
         <table className="table">
           <thead className="thead-light">
-            
+
             <tr>
               <th>Name</th>
               <th>Email</th>

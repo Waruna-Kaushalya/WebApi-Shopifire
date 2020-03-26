@@ -8,7 +8,7 @@ const User = require('../models/user')
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-app.post("/", async (req, res) => { 
+app.post("/", async (req, res) => {
 
   console.log("userroute reques recieved")
   console.log("registern----------------")

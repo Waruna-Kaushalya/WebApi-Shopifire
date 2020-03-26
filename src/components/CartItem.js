@@ -59,13 +59,13 @@ export default class CartItem extends React.Component {
 	};
 
 	addCartoDB(objectarray) {
-		console.log("helloooo addcarttodb") 
+		console.log("helloooo addcarttodb")
 
 		var retrievedObject = localStorage.getItem('userObject980');
 		var z = JSON.parse(retrievedObject)
 		var userid = z._id
-		storeCart(userid, objectarray) .then(response => {console.log("Response recieved");window.location.reload(false); })
-		.catch();
+		storeCart(userid, objectarray).then(response => { console.log("Response recieved"); window.location.reload(false); })
+			.catch();
 	}
 
 	render() {
@@ -83,12 +83,12 @@ export default class CartItem extends React.Component {
 										<h4 className="card-title">{product.title}</h4>
 										<h5 className="card-text"><small>price: </small>Rs.{product.price}</h5>
 										<table><tr><td>
-										<button type="button" className="btn btn-outline-info" onClick={this.temp2} style={{ width: "30px" , height:"40px"}} >-</button>
+											<button type="button" className="btn btn-outline-info" onClick={this.temp2} style={{ width: "30px", height: "40px" }} >-</button>
 										</td><td>
-										<input type="text" className="form-control" value={this.state.quantity} name="quantity" onChange={this.handleInputChange} style={{ width: "50px",height:"40px" }} />
-										</td><td>
-										<button type="button" className="btn btn-outline-info" onClick={this.temp1} style={{ width: "30px" , height:"40px"}}>+</button><br/>
-										</td></tr></table>
+												<input type="text" className="form-control" value={this.state.quantity} name="quantity" onChange={this.handleInputChange} style={{ width: "50px", height: "40px" }} />
+											</td><td>
+												<button type="button" className="btn btn-outline-info" onClick={this.temp1} style={{ width: "30px", height: "40px" }}>+</button><br />
+											</td></tr></table>
 										<span className="card-text text-success"><small>Quantity: </small>{this.state.quantity}</span>
 										<h5 ><small>price: </small>Rs.{product.price * parseInt(this.state.quantity)}</h5>
 										<button className="btn btn-sm btn-warning " onClick={() => this.props.remove(product)}>Remove from cart</button>

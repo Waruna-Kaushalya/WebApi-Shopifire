@@ -6,7 +6,7 @@ export default class AdminLog extends React.Component {
 
   constructor() {
     super();
-    this.state = { name: '', password: '',emaillabel:'',passwordlabel:'' };
+    this.state = { name: '', password: '', emaillabel: '', passwordlabel: '' };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitLogin = this.submitLogin.bind(this);
   }
@@ -31,14 +31,14 @@ export default class AdminLog extends React.Component {
     if (x === 200) {
       this.clearTextFields()
       console.log("suscees response 1")
-  
+
       const token = response.data;
-     
-     
+
+
       localStorage.setItem("userObject981", JSON.stringify(token));
 
 
-    window.location = '/AdminItems/'
+      window.location = '/AdminItems/'
 
 
     }
@@ -58,7 +58,7 @@ export default class AdminLog extends React.Component {
 
       });
     }
-    else{
+    else {
       this.setState({
         emaillabel: response.data.emailmessage,
         passwordlabel: response.data.passwordmessage,
@@ -113,7 +113,7 @@ export default class AdminLog extends React.Component {
     }
     else if (localStorage.userObject981) {
       var retrievedObject = localStorage.getItem('userObject981');
-     // var retrievedObject2 = localStorage.getItem('userObject980logstatus');//userObject980logstatus
+      // var retrievedObject2 = localStorage.getItem('userObject980logstatus');//userObject980logstatus
       var z = JSON.parse(retrievedObject)
       console.log("Admin user")
       console.log(z.name);
@@ -147,10 +147,10 @@ export default class AdminLog extends React.Component {
                   <input type="password" className="form-control" name="password" onChange={this.handleInputChange} />
                   <label><font color="red">{this.state.passwordlabel}</font></label>
                 </div>
-                <button type="submit"  class="login">Sign In</button>
+                <button type="submit" class="login">Sign In</button>
               </form>
-              <br/>
-           
+              <br />
+
             </div>
           </div>
         </div>

@@ -29,10 +29,10 @@ class App extends Component {
     if (localStorage.userObject980) {
       this.setState({ loggedinStatus: "customer" })
     }
-    else if (localStorage.userObject981){
+    else if (localStorage.userObject981) {
       this.setState({ loggedinStatus: "admin" })
     }
-    else{
+    else {
       this.setState({ loggedinStatus: "loggedout" })
     }
   }
@@ -56,22 +56,22 @@ class App extends Component {
                 <div className="navbar-nav">
                   <Link className="nav-item nav-link" to="/">Products</Link>
 
-                  {(this.state.loggedinStatus=="customer") ? [<Link className="nav-item nav-link" to="/cart">Cart</Link>] : ''}
+                  {(this.state.loggedinStatus == "customer") ? [<Link className="nav-item nav-link" to="/cart">Cart</Link>] : ''}
                   {
-                    (this.state.loggedinStatus=="loggedout") ?
-                    ([<Link className="nav-item nav-link float-right" to="/login">Log in</Link>, <Link className="nav-item nav-link float-right" to="/register">Register</Link>]):''
-                     
+                    (this.state.loggedinStatus == "loggedout") ?
+                      ([<Link className="nav-item nav-link float-right" to="/login">Log in</Link>, <Link className="nav-item nav-link float-right" to="/register">Register</Link>]) : ''
+
                     //  
                   }
 
                 </div>
                 <div class="navbar-nav" >
-                { (this.state.loggedinStatus=="admin"||this.state.loggedinStatus=="loggedout") ?
-                <Link className="nav-item nav-link" to="/AdminLog">Adminstrator</Link>:''}
-               
+                  {(this.state.loggedinStatus == "admin" || this.state.loggedinStatus == "loggedout") ?
+                    <Link className="nav-item nav-link" to="/AdminLog">Adminstrator</Link> : ''}
+
 
                   {
-                    (this.state.loggedinStatus=="customer") ?
+                    (this.state.loggedinStatus == "customer") ?
                       (<Link className="nav-item nav-link" to="/UserProfile">User</Link>) : ''
                   }
                 </div>
@@ -87,8 +87,8 @@ class App extends Component {
             <Route exact path="/UserProfile" component={UserProfile} />
             <Route exact path="/EditProfile" component={EditProfile} />
             <Route exact path="/EditPassword" component={EditPassword} />
-             <Route exact path="/login" component={Login} />
-             <Route exact path="/register" component={Register} /> 
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
 
           </div>
         </div>

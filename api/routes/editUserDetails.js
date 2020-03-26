@@ -17,15 +17,15 @@ app.post("/", async (req, res) => {
         if (user) {
             if (user._id == req.body.id) {
                 console.log('\u001b[1;35m successss user_id')
-              
+
                 var id1 = mongoose.Types.ObjectId(req.body.id);
-                
+
                 userModel.findOne({ _id: id1 }, function (err, doc) {
                     doc.name = req.body.name;
-                    doc.email=req.body.email;
-                   
+                    doc.email = req.body.email;
+
                     doc.save();
-                    var userobj={_id:req.body.id, name: req.body.name, email: req.body.email, password: doc.password, cart: doc.cart }
+                    var userobj = { _id: req.body.id, name: req.body.name, email: req.body.email, password: doc.password, cart: doc.cart }
                     return res.status(200).json(userobj);
                 });
 
@@ -34,22 +34,19 @@ app.post("/", async (req, res) => {
                 console.log('\u001b[1;35m faill user_id')
                 return res.status(274).json("Email already exists");
             }
-
-
-            // 
         }
-        else{
+        else {
 
-            var id1  = mongoose.Types.ObjectId(req.body.id);
-                
+            var id1 = mongoose.Types.ObjectId(req.body.id);
+
             userModel.findOne({ _id: id1 }, function (err, doc) {
                 doc.name = req.body.name;
-                doc.email=req.body.email;
-               
+                doc.email = req.body.email;
+
                 doc.save();
-               
+
                 return res.status(200).json(doc);
-            }); 
+            });
         }
     });
 });

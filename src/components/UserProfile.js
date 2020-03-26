@@ -9,23 +9,23 @@ export default class UserProfile extends React.Component {
 
   constructor() {
     super();
-    this.state = { name: '', email: ''};
+    this.state = { name: '', email: '' };
     this.handleInputChange = this.handleInputChange.bind(this);
-  
+
   }
 
   handleInputChange(event) {
     this.setState({ [event.target.name]: event.target.value })
 
   }
-  
+
   componentWillMount() {
-  var x=localStorage.getItem("userObject980")
-  var x = JSON.parse(x)
-  this.setState({name:x.name,email:x.email})
-}
-  
-logOutUser() {
+    var x = localStorage.getItem("userObject980")
+    var x = JSON.parse(x)
+    this.setState({ name: x.name, email: x.email })
+  }
+
+  logOutUser() {
     console.log("LogOut000000000000000000000000000000000000000000000000000")
     localStorage.removeItem("userObject980");
     localStorage.removeItem("userObject980logstatus")
@@ -33,12 +33,11 @@ logOutUser() {
     window.location = '/'
   }
 
-  navigateToEditprofile()
-  { window.location = '/EditProfile'}
- 
+  navigateToEditprofile() { window.location = '/EditProfile' }
 
 
-  
+
+
   render() {
     return (
       <div className="container">
@@ -49,22 +48,22 @@ logOutUser() {
               <h1>User Profile</h1>
             </div>
             <table>
-            <tr>
-            <td>Name</td><td>:</td><td>{this.state.name}</td>
-            
-            </tr>
-            <tr>
-            <td>Email</td><td>:</td><td>{this.state.email}</td>
-            
-            
-            </tr>
-            
-            
-            <tr>
-            <td><button class="login" onClick={this.navigateToEditprofile}>Edit Profile</button></td><td></td><td><button class="logout" onClick={this.logOutUser}>Sign Out</button></td>
-            </tr>
+              <tr>
+                <td>Name</td><td>:</td><td>{this.state.name}</td>
+
+              </tr>
+              <tr>
+                <td>Email</td><td>:</td><td>{this.state.email}</td>
+
+
+              </tr>
+
+
+              <tr>
+                <td><button class="login" onClick={this.navigateToEditprofile}>Edit Profile</button></td><td></td><td><button class="logout" onClick={this.logOutUser}>Sign Out</button></td>
+              </tr>
             </table>
-         
+
           </div>
         </div>
       </div>

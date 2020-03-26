@@ -5,20 +5,19 @@ module.exports = (req, res, next) => {
   var status = true;
   let name = req.body.name
   let email = req.body.email
-  
-  let errorList = { namemessage: "", emailmessage: ""}
+
+  let errorList = { namemessage: "", emailmessage: "" }
   let emptytextFieldMessage = "Please Fill this Text Field"
   if ((name == null) || (name === "")) {
     status = false
-    
+
     errorList.namemessage = emptytextFieldMessage
   }
   if ((email == null) || (email === "")) {
     status = false
-    
+
     errorList.emailmessage = emptytextFieldMessage
   }
-  
 
   if (status) {
 
@@ -26,11 +25,10 @@ module.exports = (req, res, next) => {
 
     if (!re.test(email)) {
       status = false
-      
+
       errorList.emailmessage = "Please enter a valid email address"
 
     }
-
   }
 
   //console.log(name+" "+email+" "+password+" "+rpassword)
@@ -39,5 +37,4 @@ module.exports = (req, res, next) => {
   else {
     next()
   }
-
 }

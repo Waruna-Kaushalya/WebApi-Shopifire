@@ -20,12 +20,12 @@ export default class Register extends React.Component {
   submitProfileEdit(event) {
     this.clearLabel()
     event.preventDefault();
-   EditUserDetails(this.state)
+    EditUserDetails(this.state)
       .then(response => { this.handleResponse(response) })
       .catch(err => console.log(err.response.data.errors));
   }
   handleResponse(response) {
-      console.log("Handle resoponse block")
+    console.log("Handle resoponse block")
     var x = response.status
     if (x === 200) {
       this.clearTextFields()
@@ -33,12 +33,12 @@ export default class Register extends React.Component {
       console.log(response.data.name)
       const token = response.data;
 
-     
-     
-     
+
+
+
       localStorage.setItem("userObject980", JSON.stringify(token));
       localStorage.setItem("userObject980logstatus", true);
-     
+
       this.showAlert()
     }
     else if (x === 274) {
@@ -49,7 +49,7 @@ export default class Register extends React.Component {
     }
     else {
       console.log("fail response 1112")
-     console.log(response.data.passwordmessage)
+      console.log(response.data.passwordmessage)
       this.setState({
         namelabel: response.data.namemessage,
         emaillabel: response.data.emailmessage,
@@ -118,8 +118,7 @@ export default class Register extends React.Component {
     else { console.log("user logged out") }
 
   }
-  navigateToPassword()
-  { window.location = '/EditPassword'}
+  navigateToPassword() { window.location = '/EditPassword' }
 
 
 
@@ -130,12 +129,11 @@ export default class Register extends React.Component {
   }
 
   componentWillMount() {
-    var x=localStorage.getItem("userObject980")
+    var x = localStorage.getItem("userObject980")
     var x = JSON.parse(x)
-    this.setState({name:x.name,email:x.email})
+    this.setState({ name: x.name, email: x.email })
   }
-  backButton()
-  {window.location = '/UserProfile'}
+  backButton() { window.location = '/UserProfile' }
 
   render() {
     return (
@@ -158,16 +156,16 @@ export default class Register extends React.Component {
                   <input type="text" className="form-control" name="email" onChange={this.handleInputChange} value={this.state.email} />
                   <label><font color="red">{this.state.emaillabel}</font></label>
                 </div>
-                
-              
-                <button type="submit" class="login">Submit</button><br/>
-               
+
+
+                <button type="submit" class="login">Submit</button><br />
+
               </form>
               <p></p>
               <p>
-              <button class="login" onClick={this.navigateToPassword}>Edit Password</button> <button class="logout" onClick={this.backButton}>Cancel</button></p>
-             
-              
+                <button class="login" onClick={this.navigateToPassword}>Edit Password</button> <button class="logout" onClick={this.backButton}>Cancel</button></p>
+
+
             </div>
           </div>
         </div>

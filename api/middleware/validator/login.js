@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
 
     errorList.passwordmessage = emptytextFieldMessage
   }
-  
+
   if (!status) { res.status(202).json(errorList); }
   else {
     next()
