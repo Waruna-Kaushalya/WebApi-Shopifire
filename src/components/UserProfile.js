@@ -3,6 +3,7 @@ import { register } from '../repository';
 import jwt_decode from "jwt-decode";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import "../customcss/button.css"
 
 export default class UserProfile extends React.Component {
 
@@ -60,7 +61,7 @@ logOutUser() {
             
             
             <tr>
-            <td><button onClick={this.navigateToEditprofile}>Edit Profile</button></td><td></td><td><button onClick={this.logOutUser}>logout</button></td>
+            <td><button class="login" onClick={this.navigateToEditprofile}>Edit Profile</button></td><td></td><td><button class="logout" onClick={this.logOutUser}>Sign Out</button></td>
             </tr>
             </table>
          

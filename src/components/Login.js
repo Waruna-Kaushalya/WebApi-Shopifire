@@ -2,6 +2,7 @@ import React from 'react';
 import { login } from '../repository';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import "../customcss/button.css"
 
 export default class Login extends React.Component {
 
@@ -135,7 +136,7 @@ export default class Login extends React.Component {
                   <input type="password" className="form-control" name="password" onChange={this.handleInputChange} value={this.state.password} />
                   <label><font color="red">{this.state.passwordlabel}</font></label>
                 </div>
-                <button type="submit" className="btn btn-default">Submit</button>
+                <button type="submit" class="login">Sign In</button>
               </form>
               <button onClick={this.tempfunc2}>getstorage</button>
             </div>

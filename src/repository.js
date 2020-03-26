@@ -78,6 +78,3 @@ export function searchFunction1 (searchvalue,packaging,location,minvalue,maxvalu
 }
 
 
-export function isAuthenticated(){
-	return localStorage.getItem('x-access-token') && localStorage.getItem('x-access-token-expiration') > Date.now()
-}

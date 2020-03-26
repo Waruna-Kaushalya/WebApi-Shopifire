@@ -10,14 +10,14 @@ import UserProfile from "./components/UserProfile"
 import EditProfile from "./components/EditProfile"
 import EditPassword from "./components/Editpassword"
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import { isAuthenticated } from './repository';
+
 
 
 class App extends Component {
 
   constructor() {
     super();
-    this.state = { loggedinStatus: '' };
+    this.state = { loggedinStatus: 'loggedout' };
     this.handleInputChange = this.handleInputChange.bind(this);
 
   }
@@ -27,10 +27,13 @@ class App extends Component {
 
   componentWillMount() {
     if (localStorage.userObject980) {
-      this.setState({ loggedinStatus: true })
+      this.setState({ loggedinStatus: "customer" })
     }
-    else {
-      this.setState({ loggedinStatus: false })
+    else if (localStorage.userObject981){
+      this.setState({ loggedinStatus: "admin" })
+    }
+    else{
+      this.setState({ loggedinStatus: "loggedout" })
     }
   }
   logOut() {
@@ -38,7 +41,7 @@ class App extends Component {
   }
 
   render() {
-    const auth = isAuthenticated();
+
     return (
       <Router>
         <div>
@@ -53,20 +56,22 @@ class App extends Component {
                 <div className="navbar-nav">
                   <Link className="nav-item nav-link" to="/">Products</Link>
 
-                  {(this.state.loggedinStatus) ? [<Link className="nav-item nav-link" to="/cart">Cart</Link>, <Link className="nav-item nav-link" to="/checkout">Checkout</Link>] : ''}
+                  {(this.state.loggedinStatus=="customer") ? [<Link className="nav-item nav-link" to="/cart">Cart</Link>] : ''}
                   {
-                    (this.state.loggedinStatus) ?
-                      (<a className="nav-item nav-link" href="/" onClick={this.logOut}>Log out</a>) :
-                      ([<Link className="nav-item nav-link float-right" to="/login">Log in</Link>, <Link className="nav-item nav-link float-right" to="/register">Register</Link>])
+                    (this.state.loggedinStatus=="loggedout") ?
+                    ([<Link className="nav-item nav-link float-right" to="/login">Log in</Link>, <Link className="nav-item nav-link float-right" to="/register">Register</Link>]):''
+                     
                     //  
                   }
 
                 </div>
                 <div class="navbar-nav" >
-                  <Link className="nav-item nav-link" to="/AdminLog">Admin</Link>
+                { (this.state.loggedinStatus=="admin"||this.state.loggedinStatus=="loggedout") ?
+                <Link className="nav-item nav-link" to="/AdminLog">Adminstrator</Link>:''}
+               
 
                   {
-                    (this.state.loggedinStatus) ?
+                    (this.state.loggedinStatus=="customer") ?
                       (<Link className="nav-item nav-link" to="/UserProfile">User</Link>) : ''
                   }
                 </div>
@@ -82,8 +87,8 @@ class App extends Component {
             <Route exact path="/UserProfile" component={UserProfile} />
             <Route exact path="/EditProfile" component={EditProfile} />
             <Route exact path="/EditPassword" component={EditPassword} />
-            {(!auth) ? <Route exact path="/login" component={Login} /> : ''}
-            {(!auth) ? <Route exact path="/register" component={Register} /> : ''}
+             <Route exact path="/login" component={Login} />
+             <Route exact path="/register" component={Register} /> 
 
           </div>
         </div>

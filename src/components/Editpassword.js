@@ -3,6 +3,7 @@ import { Editpassword } from '../repository';
 import jwt_decode from "jwt-decode";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import "../customcss/button.css"
 
 export default class Register extends React.Component {
 
@@ -104,18 +105,8 @@ export default class Register extends React.Component {
     });
 
   }
-  tempfunc2() {
-    if (localStorage.userObject980) {
-      var retrievedObject = localStorage.getItem('userObject980');
-      var retrievedObject2 = localStorage.getItem('userObject980logstatus');
-      var z = JSON.parse(retrievedObject)
-      console.log("zonet")
-      console.log(z.name);
-      console.log(z.email);
-      console.log("logstatus")
-      console.log(retrievedObject2)
-    }
-    else { console.log("user logged out") }
+  backButton() {
+    window.location = '/UserProfile'
 
   }
   logOutUser() {
@@ -156,10 +147,11 @@ export default class Register extends React.Component {
               </div>
                 
               
-                <button type="submit" className="btn btn-default">Submit</button> <br/>
+                <button type="submit" className="login">Submit</button> <br/>
                
               </form>
-              <button onClick={this.tempfunc2}>getstorage</button>
+              <br/>
+              <button class="logout" onClick={this.backButton}>Cancel</button>
               
             </div>
           </div>

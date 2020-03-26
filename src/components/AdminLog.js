@@ -1,5 +1,6 @@
 import React from 'react';
 import { adminLog } from '../repository';
+import "../customcss/button.css"
 
 export default class AdminLog extends React.Component {
 
@@ -49,12 +50,18 @@ export default class AdminLog extends React.Component {
 
       });
     }
-    else {
+    else if (x === 275) {
       console.log("fail response  empty 1112")
       this.setState({
 
         passwordlabel: "The password which you enterd is incorrect"
 
+      });
+    }
+    else{
+      this.setState({
+        emaillabel: response.data.emailmessage,
+        passwordlabel: response.data.passwordmessage,
       });
     }
 
@@ -78,6 +85,11 @@ export default class AdminLog extends React.Component {
       password: ''
     });
 
+  }
+  componentWillMount() {
+    if (localStorage.userObject981) {
+      window.location = '/AdminItems/'
+    }
   }
 
   tempfunc2() {
@@ -135,11 +147,10 @@ export default class AdminLog extends React.Component {
                   <input type="password" className="form-control" name="password" onChange={this.handleInputChange} />
                   <label><font color="red">{this.state.passwordlabel}</font></label>
                 </div>
-                <button type="submit" className="btn btn-default">Submit</button>
+                <button type="submit"  class="login">Sign In</button>
               </form>
-              <button onClick={this.tempfunc2}>getnavigate</button>
-              <button onClick={this.logOutUser}>logout</button>
-              <button onClick={this.tempfunc3}>getstorage</button>
+              <br/>
+           
             </div>
           </div>
         </div>

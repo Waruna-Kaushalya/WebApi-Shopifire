@@ -1,0 +1,52 @@
+.login{
+    background-color: rgb(16, 199, 22); /* Green */
+    border: 2px solid rgb(16, 199, 22);
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    
+  }
+  .login:hover {
+    background-color: rgb(3, 92, 6); /* Green */
+    color: white;
+    border: 2px solid rgb(3, 92, 6);
+  }
+  .login:active {
+    background-color: rgb(3, 92, 6);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    border: 2px solid rgb(3, 92, 6);
+  }
+
+
+
+
+  .logout{
+    background-color: rgb(247, 2, 2);; /* Green */
+    border: 2px solid rgb(247, 2, 2);;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    
+  }
+  .logout:hover {
+    background-color: rgb(95, 4, 4); /* Green */
+    color: white;
+    border: 2px solid rgb(95, 4, 4);;
+  }
+  .logout:active {
+    background-color:  rgb(95, 4, 4);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    border: 2px solid rgb(95, 4, 4);;
+  }

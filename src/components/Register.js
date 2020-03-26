@@ -3,6 +3,7 @@ import { register } from '../repository';
 import jwt_decode from "jwt-decode";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import "../customcss/button.css"
 
 export default class Register extends React.Component {
 
@@ -159,7 +160,7 @@ export default class Register extends React.Component {
                   <input type="password" className="form-control" name="rpassword" onChange={this.handleInputChange} value={this.state.rpassword} />
                   <label><font color="red">{this.state.rpasswordlabel}</font></label>
                 </div>
-                <button type="submit" className="btn btn-default">Submit</button>
+                <button type="submit" class="login">Sign Up</button>
               </form>
               <button onClick={this.tempfunc2}>getstorage</button>
               <button onClick={this.logOutUser}>logout</button>

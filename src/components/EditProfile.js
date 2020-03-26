@@ -3,6 +3,7 @@ import { EditUserDetails } from '../repository';
 import jwt_decode from "jwt-decode";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import "../customcss/button.css"
 
 export default class Register extends React.Component {
 
@@ -133,6 +134,8 @@ export default class Register extends React.Component {
     var x = JSON.parse(x)
     this.setState({name:x.name,email:x.email})
   }
+  backButton()
+  {window.location = '/UserProfile'}
 
   render() {
     return (
@@ -157,10 +160,13 @@ export default class Register extends React.Component {
                 </div>
                 
               
-                <button type="submit" className="btn btn-default">Submit</button> <br/>
+                <button type="submit" class="login">Submit</button><br/>
                
               </form>
-              <button onClick={this.navigateToPassword}>getstorage</button>
+              <p></p>
+              <p>
+              <button class="login" onClick={this.navigateToPassword}>Edit Password</button> <button class="logout" onClick={this.backButton}>Cancel</button></p>
+             
               
             </div>
           </div>

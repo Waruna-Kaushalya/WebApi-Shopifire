@@ -15,8 +15,8 @@ export default class ProductList extends React.Component {
 			search:'',
 
 			value: {
-				min: 5,
-				max: 10,
+				min: 0,
+				max: 5000,
 			  },
 			  packaging:'a',
 			  originlocation:'o'

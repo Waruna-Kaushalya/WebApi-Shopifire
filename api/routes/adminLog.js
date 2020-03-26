@@ -16,6 +16,7 @@ app.post("/", async (req, res) => {
   console.log("hashn amin login route reques recieved")
 
   User.findOne({ email: req.body.email }).then(user => {
+    console.log('\u001b[1;35m no email'+req.body.email)
     if (user) {
       console.log(user.password)
       bcrypt.compare(password, user.password).then(isMatch => {
@@ -30,6 +31,7 @@ app.post("/", async (req, res) => {
       });
 
     } else {
+      console.log('\u001b[1;35m no email')
       return res.status(274).json("Email already exists");
 
     }

@@ -62,8 +62,10 @@ export default class Cart extends React.Component {
 
 
 	clearCart = () => {
-		localStorage.removeItem('cart');
+		var cart={}
+		localStorage.setItem('cart', JSON.stringify(cart));
 		this.setState({ products: [] });
+		this.addCartoDB(JSON.stringify(cart))
 	}
 
 	render() {
